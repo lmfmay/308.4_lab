@@ -56,5 +56,19 @@ tableArray.push (rowArray); // add last row because there is no \n on last row.
 console.log(tableArray); 
 
 // Part 3: Transforming Data
+/* For each row of data in the result array produced by your code above, create an object where the key of each value is the heading for that value’s column.
+Store these objects in an array, in the order that they were originally listed.*/
+let rowObject = {}; //create row object
+let newTableArray = []; //adding row objects to new array
+
+for (let row = 1; row < tableArray.length; row++) { //row starts from index 1 because index 0 is the key
+    for (let i = 0; i < rowArray.length; i++) { //dynamically convert each row item into key-value pairs regardless of number of columns
+        rowObject[tableArray[0][i].toLowerCase()] = tableArray[row][i];
+    }
+    newTableArray.push(rowObject); //add row object to new table array
+    rowObject = {}; //clear row object for next iteration
+}    
+console.log(newTableArray);
+
 // Part 4: Sorting and Manipulating Data
 // Part 5: Full Circle
