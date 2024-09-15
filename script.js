@@ -86,4 +86,15 @@ Store these objects in an array, in the order that they were originally listed.*
     });
     console.log(`Average age of group is ${sumAge / newTableArray.length}.`) //use array length to calculate avg age
 
-// // Part 5: Full Circle
+// Part 5: Full Circle
+//transform the final set of data back into CSV format
+let newTablerowArray = [];
+let newTable2dArray = [];
+for (i of newTableArray) { 
+    newTablerowArray.push(...Object.values(i)); //for each object, get values and push to new row array
+    newTable2dArray.push(newTablerowArray); //push new row array to new 2d array
+    newTablerowArray = []; //clear new row array for next iteration
+};
+newTable2dArray.unshift(Object.keys(newTableArray[0])); //add keys to start of 2d array as headers
+let newTableArrayStr = newTable2dArray.join(`\\n`); //transform array to csv, with \n delimiting each row
+console.log(newTableArrayStr);
